@@ -1,5 +1,5 @@
 ---
-title: "Coursera Repdata PA1"
+title: "PA1_template.RMD"
 author: "Ozgur Erciyes"
 date: "Friday, July 17, 2015"
 output: html_document
@@ -8,23 +8,19 @@ output: html_document
 
 This section covers the loading of the data and the preparation for future analysis.
 
-```{r SetWD,echo=TRUE}```
+
+```{r SetWD,echo=FALSE}
 setwd("C:/Users/oerciyes/Desktop/Data Science/Reproducible/PA 1/RepData_PeerAssessment1")
 
 ```
 
+
+
 Read in the `activity.csv` file that contains the raw data
 
 ```{r Read Table}
-activity <- read.csv(file = "activity.csv",header = TRUE,sep = ",")
+activity <- read.csv("activity.csv", colClass=c('integer', 'Date', 'integer'))
 
-```
-
-Print out the first 6 rows of the loaded data and the Column Names.
-
-```{r Data Summary, echo=FALSE}
-head(activity)
-names(activity)
 ```
 
 Convert the date column from a character vector to a date
@@ -122,3 +118,4 @@ Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minut
 library(lattice)
 xyplot(steps~interval | weekend,stepsbyday,type = "l", layout = c(1,2),xlab = "Interval", ylab = "Number of Steps")
 ```
+
